@@ -1,68 +1,131 @@
-# :package_description
+# This is my package filament-image-radio-button
 
-[![Latest Version on Packagist](https://img.shields.io/packagist/v/:vendor_slug/:package_slug.svg?style=flat-square)](https://packagist.org/packages/:vendor_slug/:package_slug)
-[![GitHub Tests Action Status](https://img.shields.io/github/actions/workflow/status/:vendor_slug/:package_slug/run-tests.yml?branch=main&label=tests&style=flat-square)](https://github.com/:vendor_slug/:package_slug/actions?query=workflow%3Arun-tests+branch%3Amain)
-[![GitHub Code Style Action Status](https://img.shields.io/github/actions/workflow/status/:vendor_slug/:package_slug/fix-php-code-styling.yml?branch=main&label=code%20style&style=flat-square)](https://github.com/:vendor_slug/:package_slug/actions?query=workflow%3A"Fix+PHP+code+styling"+branch%3Amain)
-[![Total Downloads](https://img.shields.io/packagist/dt/:vendor_slug/:package_slug.svg?style=flat-square)](https://packagist.org/packages/:vendor_slug/:package_slug)
+[![Latest Version on Packagist](https://img.shields.io/packagist/v/alkoumi/filament-image-radio-button.svg?style=flat-square)](https://packagist.org/packages/alkoumi/filament-image-radio-button)
+[![GitHub Tests Action Status](https://img.shields.io/github/actions/workflow/status/alkoumi/filament-image-radio-button/run-tests.yml?branch=main&label=tests&style=flat-square)](https://github.com/alkoumi/filament-image-radio-button/actions?query=workflow%3Arun-tests+branch%3Amain)
+[![GitHub Code Style Action Status](https://img.shields.io/github/actions/workflow/status/alkoumi/filament-image-radio-button/fix-php-code-styling.yml?branch=main&label=code%20style&style=flat-square)](https://github.com/alkoumi/filament-image-radio-button/actions?query=workflow%3A"Fix+PHP+code+styling"+branch%3Amain)
+[![Total Downloads](https://img.shields.io/packagist/dt/alkoumi/filament-image-radio-button.svg?style=flat-square)](https://packagist.org/packages/alkoumi/filament-image-radio-button)
 
-<!--delete-->
----
-This repo can be used to scaffold a Filament plugin. Follow these steps to get started:
 
-1. Press the "Use this template" button at the top of this repo to create a new repo with the contents of this skeleton.
-2. Run "php ./configure.php" to run a script that will replace all placeholders throughout all the files.
-3. Make something great!
----
-<!--/delete-->
+If you want Filament field to choose and select an Image from a group of images with a Radio button
+This is Image Radio button to replacing traditional radio buttons with images selection.
 
-This is where your description should go. Limit it to a paragraph or two. Consider adding a small example.
+##
+
+![filament-image-radio-button.gif](stubs/filament-image-radio-button.gif)
 
 ## Installation
 
 You can install the package via composer:
 
 ```bash
-composer require :vendor_slug/:package_slug
+composer require alkoumi/filament-image-radio-button
 ```
 
-You can publish and run the migrations with:
+[//]: # (You can publish and run the migrations with:)
 
-```bash
-php artisan vendor:publish --tag=":package_slug-migrations"
-php artisan migrate
-```
+[//]: # ()
+[//]: # (```bash)
 
-You can publish the config file with:
+[//]: # (php artisan vendor:publish --tag="filament-image-radio-button-migrations")
 
-```bash
-php artisan vendor:publish --tag=":package_slug-config"
-```
+[//]: # (php artisan migrate)
 
-Optionally, you can publish the views using
+[//]: # (```)
 
-```bash
-php artisan vendor:publish --tag=":package_slug-views"
-```
+[//]: # (You can publish the config file with:)
 
-This is the contents of the published config file:
+[//]: # ()
+[//]: # (```bash)
+
+[//]: # (php artisan vendor:publish --tag="filament-image-radio-button-config")
+
+[//]: # (```)
+
+[//]: # (Optionally, you can publish the views using)
+
+[//]: # ()
+[//]: # (```bash)
+
+[//]: # (php artisan vendor:publish --tag="filament-image-radio-button-views")
+
+[//]: # (```)
+
+[//]: # (This is the contents of the published config file:)
+
+[//]: # ()
+[//]: # (```php)
+
+[//]: # (return [)
+
+[//]: # (];)
+
+[//]: # (```)
+
+# Important
+### 1- OPTIONS
+The radio buttom has options then the senario Here is you have 
+Model `Report` and you want to choose a design of a report 
+
+so options here must return `return Report::pluck('file', 'id')->toArray();` 
+the options will be like 
+
+`[ 1 => reort1.jpg , 2 => reort2.jpg]`
+then the user will choose the design.
+
+### 1- Images
+You must define where you stored the images in `filesystems` disks 
+somthing like `local` or `public` so in this example I am using `->disk('reports')` 
+So the component can find the images files
+
+        'local' => [
+            'driver' => 'local',
+            'root' => storage_path('app/private'),
+            'serve' => true,
+            'throw' => false,
+        ],
+
+        'public' => [
+            'driver' => 'local',
+            'root' => storage_path('app/public'),
+            'url' => env('APP_URL') . '/storage',
+            'visibility' => 'public',
+            'throw' => false,
+        ],
+
+        'reports' => [
+            'driver' => 'local',
+            'root' => storage_path('app/public/reports'),
+            'url' => env('APP_URL') . '/reports',
+            'visibility' => 'public',
+            'throw' => false,
+        ],
+
+
+## Usage in advanced senario
 
 ```php
-return [
-];
+use Alkoumi\FilamentImageRadioButton\Forms\Components\ImageRadioGroup;
+
+
+ImageRadioGroup::make('report_id')
+            ->animation(true)
+            ->required()
+            ->label(__('Report Design'))
+            ->disk('reports')
+            ->options(function (Get $get) {
+                return Report::whereType($get('type_id'))->pluck('file', 'id')->toArray();
+            })->afterStateUpdated(fn(Get $get, Set $set, ?string $state) => $set('reportdesign', ['report' => Report::find($state), 'date' => explode(' ', $get('report_date'))[0]])) //2023-06-01
+            ->live(),
 ```
 
-## Usage
+[//]: # (## Testing)
 
-```php
-$variable = new VendorName\Skeleton();
-echo $variable->echoPhrase('Hello, VendorName!');
-```
+[//]: # ()
+[//]: # (```bash)
 
-## Testing
+[//]: # (composer test)
 
-```bash
-composer test
-```
+[//]: # (```)
 
 ## Changelog
 
@@ -78,7 +141,7 @@ Please review [our security policy](../../security/policy) on how to report secu
 
 ## Credits
 
-- [:author_name](https://github.com/:author_username)
+- [Mohamed alkoumi](https://github.com/alkoumi)
 - [All Contributors](../../contributors)
 
 ## License
