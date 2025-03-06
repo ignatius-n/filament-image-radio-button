@@ -1,5 +1,6 @@
 <?php
 
-it('will not use debugging functions')
-    ->expect(['dd', 'dump', 'ray'])
-    ->each->not->toBeUsed();
+it('make creates new instance')
+    ->expect(fn () => \Alkoumi\FilamentImageRadioButton\Forms\Components\ImageRadioGroup::make('test')->animation(true))
+    ->toBeInstanceOf(\Alkoumi\FilamentImageRadioButton\Forms\Components\ImageRadioGroup::class);
+

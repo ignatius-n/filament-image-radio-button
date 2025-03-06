@@ -45,9 +45,9 @@ class FilamentImageRadioButtonServiceProvider extends PackageServiceProvider
             $package->hasConfigFile();
         }
 
-        if (file_exists($package->basePath('/../database/migrations'))) {
-            $package->hasMigrations($this->getMigrations());
-        }
+//        if (file_exists($package->basePath('/../database/migrations'))) {
+//            $package->hasMigrations($this->getMigrations());
+//        }
 
         if (file_exists($package->basePath('/../resources/lang'))) {
             $package->hasTranslations();
@@ -63,18 +63,18 @@ class FilamentImageRadioButtonServiceProvider extends PackageServiceProvider
     public function packageBooted(): void
     {
         // Asset Registration
-        FilamentAsset::register(
-            $this->getAssets(),
-            $this->getAssetPackageName()
-        );
+//        FilamentAsset::register(
+//            //$this->getAssets(),
+//            $this->getAssetPackageName()
+//        );
 
-        FilamentAsset::registerScriptData(
-            $this->getScriptData(),
-            $this->getAssetPackageName()
-        );
+//        FilamentAsset::registerScriptData(
+//            //$this->getScriptData(),
+//            $this->getAssetPackageName()
+//        );
 
         // Icon Registration
-        FilamentIcon::register($this->getIcons());
+        //FilamentIcon::register($this->getIcons());
 
         // Handle Stubs
         if (app()->runningInConsole()) {
@@ -97,56 +97,56 @@ class FilamentImageRadioButtonServiceProvider extends PackageServiceProvider
     /**
      * @return array<Asset>
      */
-    protected function getAssets(): array
-    {
-        return [
-            #AlpineComponent::make('filament-image-radio-button', __DIR__ . '/../resources/dist/components/filament-image-radio-button.js'),
-            #Css::make('filament-image-radio-button-styles', __DIR__ . '/../resources/dist/filament-image-radio-button.css'),
-            #Js::make('filament-image-radio-button-scripts', __DIR__ . '/../resources/dist/filament-image-radio-button.js'),
-        ];
-    }
+//    protected function getAssets(): array
+//    {
+//        return [
+//            #AlpineComponent::make('filament-image-radio-button', __DIR__ . '/../resources/dist/components/filament-image-radio-button.js'),
+//            #Css::make('filament-image-radio-button-styles', __DIR__ . '/../resources/dist/filament-image-radio-button.css'),
+//            #Js::make('filament-image-radio-button-scripts', __DIR__ . '/../resources/dist/filament-image-radio-button.js'),
+//        ];
+//    }
 
     /**
      * @return array<class-string>
      */
-    protected function getCommands(): array
-    {
-        return [
-            FilamentImageRadioButtonCommand::class,
-        ];
-    }
+//    protected function getCommands(): array
+//    {
+//        return [
+//            FilamentImageRadioButtonCommand::class,
+//        ];
+//    }
 
     /**
      * @return array<string>
      */
-    protected function getIcons(): array
-    {
-        return [];
-    }
+//    protected function getIcons(): array
+//    {
+//        return [];
+//    }
 
     /**
      * @return array<string>
      */
-    protected function getRoutes(): array
-    {
-        return [];
-    }
+//    protected function getRoutes(): array
+//    {
+//        return [];
+//    }
 
     /**
      * @return array<string, mixed>
      */
-    protected function getScriptData(): array
-    {
-        return [];
-    }
+//    protected function getScriptData(): array
+//    {
+//        return [];
+//    }
 
     /**
      * @return array<string>
      */
-    protected function getMigrations(): array
-    {
-        return [
-            'create_filament-image-radio-button_table',
-        ];
-    }
+//    protected function getMigrations(): array
+//    {
+//        return [
+//            'create_filament-image-radio-button_table',
+//        ];
+//    }
 }

@@ -72,7 +72,7 @@ the options will be like
 `[ 1 => reort1.jpg , 2 => reort2.jpg]`
 then the user will choose the design.
 
-### 1- Images
+### 2- Images
 You must define where you stored the images in `filesystems` disks 
 somthing like `local` or `public` so in this example I am using `->disk('reports')` 
 So the component can find the images files
