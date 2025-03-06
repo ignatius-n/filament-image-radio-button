@@ -1,4 +1,4 @@
-# This is my package filament-image-radio-button
+# This is Filament Form Radio Button But With Images
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/alkoumi/filament-image-radio-button.svg?style=flat-square)](https://packagist.org/packages/alkoumi/filament-image-radio-button)
 [![GitHub Tests Action Status](https://img.shields.io/github/actions/workflow/status/alkoumi/filament-image-radio-button/run-tests.yml?branch=main&label=tests&style=flat-square)](https://github.com/alkoumi/filament-image-radio-button/actions?query=workflow%3Arun-tests+branch%3Amain)
@@ -63,7 +63,7 @@ composer require alkoumi/filament-image-radio-button
 
 # Important
 ### 1- OPTIONS
-The radio buttom has options then the senario Here is you have 
+The radio buttom has options then the scenario Here is you have 
 Model `Report` and you want to choose a design of a report 
 
 so options here must return `return Report::pluck('file', 'id')->toArray();` 
@@ -101,7 +101,7 @@ So the component can find the images files
         ],
 
 
-## Usage in advanced senario
+## Usage in advanced scenario
 
 ```php
 use Alkoumi\FilamentImageRadioButton\Forms\Components\ImageRadioGroup;

@@ -1,8 +1,11 @@
 {
     "name": "alkoumi/filament-image-radio-button",
-    "description": "This is my package filament-image-radio-button",
+    "description": "Filament Form Radio Button But With Images",
     "keywords": [
         "alkoumi",
+        "image-select",
+        "image-radio-button",
+        "filament",
         "laravel",
         "filament-image-radio-button"
     ],
