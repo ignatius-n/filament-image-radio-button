@@ -1,10 +1,11 @@
 # This is Filament Form Radio Button But With Images
 
-[![Latest Version on Packagist](https://img.shields.io/packagist/v/alkoumi/filament-image-radio-button.svg?style=flat-square)](https://packagist.org/packages/alkoumi/filament-image-radio-button)
-[![GitHub Tests Action Status](https://img.shields.io/github/actions/workflow/status/alkoumi/filament-image-radio-button/run-tests.yml?branch=main&label=tests&style=flat-square)](https://github.com/alkoumi/filament-image-radio-button/actions?query=workflow%3Arun-tests+branch%3Amain)
-[![GitHub Code Style Action Status](https://img.shields.io/github/actions/workflow/status/alkoumi/filament-image-radio-button/fix-php-code-styling.yml?branch=main&label=code%20style&style=flat-square)](https://github.com/alkoumi/filament-image-radio-button/actions?query=workflow%3A"Fix+PHP+code+styling"+branch%3Amain)
-[![Total Downloads](https://img.shields.io/packagist/dt/alkoumi/filament-image-radio-button.svg?style=flat-square)](https://packagist.org/packages/alkoumi/filament-image-radio-button)
-
+[![Total Downloads](https://poser.pugx.org/alkoumi/filament-image-radio-button/downloads)](https://packagist.org/packages/alkoumi/filament-image-radio-button)
+![Packagist Stars](https://img.shields.io/packagist/stars/alkoumi/filament-image-radio-button?color=yellow)
+[![License](https://poser.pugx.org/alkoumi/filament-image-radio-button/license)](https://packagist.org/packages/alkoumi/filament-image-radio-button)
+[![Latest Version on Packagist](https://img.shields.io/packagist/v/alkoumi/filament-image-radio-button.svg)](https://packagist.org/packages/alkoumi/filament-image-radio-button)
+![GitHub release (latest by date)](https://img.shields.io/github/v/release/alkoumi/filament-image-radio-button)
+[![GitHub Tests Action Status](https://img.shields.io/github/actions/workflow/status/alkoumi/filament-image-radio-button/run-tests.yml?branch=main&label=tests)](https://github.com/alkoumi/filament-image-radio-button/actions?query=workflow%3Arun-tests+branch%3Amain)
 
 If you want Filament field to choose and select an Image from a group of images with a Radio button
 This is Image Radio button to replacing traditional radio buttons with images selection.
