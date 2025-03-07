@@ -28,6 +28,7 @@
 </x-dynamic-component>
 
 <style>
+    /* Common styles for both directions */
     input[name="{{ $getId() }}"]:checked + .img-radio-selected {
         background-color: rgba(var(--primary-500),var(--tw-bg-opacity));
         transform: rotate(0.8648rad);
@@ -35,8 +36,29 @@
         height: 60px;
         position: absolute;
         top: -10px;
-        right: -40px;
         z-index: 99999;
+    }
+
+    /* RTL specific positioning (right corner) */
+    [dir="rtl"] input[name="{{ $getId() }}"]:checked + .img-radio-selected {
+        right: -40px;
+        left: auto;
+    }
+
+    /* LTR specific positioning (left corner) */
+    [dir="ltr"] input[name="{{ $getId() }}"]:checked + .img-radio-selected,
+    html:not([dir="rtl"]) input[name="{{ $getId() }}"]:checked + .img-radio-selected {
+        left: -40px;
+        right: auto;
+        transform: rotate(-0.8648rad); /* Flip the rotation for LTR */
+    }
+
+    input[name="{{ $getId() }}"]:checked ~ .img-radio {
+        border: 3px solid rgba(var(--primary-500),var(--tw-bg-opacity));
+    }
+
+    input[name="{{ $getId() }}"]:checked ~ .img-radio {
+        border: 3px solid rgba(var(--primary-500),var(--tw-bg-opacity));
     }
 
     input[name="{{ $getId() }}"]:checked ~ .img-radio {
