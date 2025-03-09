@@ -62,6 +62,14 @@ So the component can find the images files
             'throw' => false,
         ],
 
+## Usage in basic scenario
+```php
+use Alkoumi\FilamentImageRadioButton\Forms\Components\ImageRadioGroup;
+
+ImageRadioGroup::make('report_id')
+                    ->disk('reports')
+                    ->options(fn (Get $get) => Report::whereType($get('type_id'))->pluck('file', 'id')->toArray()),
+```
 
 ## Usage in advanced scenario
 
