@@ -23,46 +23,6 @@ You can install the package via composer:
 composer require alkoumi/filament-image-radio-button
 ```
 
-[//]: # (You can publish and run the migrations with:)
-
-[//]: # ()
-[//]: # (```bash)
-
-[//]: # (php artisan vendor:publish --tag="filament-image-radio-button-migrations")
-
-[//]: # (php artisan migrate)
-
-[//]: # (```)
-
-[//]: # (You can publish the config file with:)
-
-[//]: # ()
-[//]: # (```bash)
-
-[//]: # (php artisan vendor:publish --tag="filament-image-radio-button-config")
-
-[//]: # (```)
-
-[//]: # (Optionally, you can publish the views using)
-
-[//]: # ()
-[//]: # (```bash)
-
-[//]: # (php artisan vendor:publish --tag="filament-image-radio-button-views")
-
-[//]: # (```)
-
-[//]: # (This is the contents of the published config file:)
-
-[//]: # ()
-[//]: # (```php)
-
-[//]: # (return [)
-
-[//]: # (];)
-
-[//]: # (```)
-
 # Important
 ### 1- OPTIONS
 The radio buttom has options then the scenario Here is you have 
@@ -108,26 +68,17 @@ So the component can find the images files
 ```php
 use Alkoumi\FilamentImageRadioButton\Forms\Components\ImageRadioGroup;
 
-
 ImageRadioGroup::make('report_id')
-            ->animation(true)
-            ->required()
-            ->label(__('Report Design'))
-            ->disk('reports')
-            ->options(function (Get $get) {
-                return Report::whereType($get('type_id'))->pluck('file', 'id')->toArray();
-            })->afterStateUpdated(fn(Get $get, Set $set, ?string $state) => $set('reportdesign', ['report' => Report::find($state), 'date' => explode(' ', $get('report_date'))[0]])) //2023-06-01
-            ->live(),
+                    ->animation(true)
+                    ->required()
+                    ->label(__('Report Design'))
+                    ->disk('reports')
+                    ->options(fn (Get $get) => Report::whereType($get('type_id'))->pluck('file', 'id')->toArray())
+                    ->afterStateUpdated(fn(Get $get, Set $set, ?string $state) => $set('reportdesign', ['report' => Report::find($state), 'date' => explode(' ', $get('report_date'))[0]])) 
+                    ->live(),
 ```
-
-[//]: # (## Testing)
-
-[//]: # ()
-[//]: # (```bash)
-
-[//]: # (composer test)
-
-[//]: # (```)
+## Screenshots
+![filament-plugin-modes.jpg](stubs/filament-plugin-modes.jpg)
 
 ## Changelog
 
