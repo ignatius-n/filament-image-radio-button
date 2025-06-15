@@ -31,7 +31,7 @@ Model `Report` and you want to choose a design of a report
 so options here must return `return Report::pluck('file', 'id')->toArray();` 
 the options will be like 
 
-`[ 1 => reort1.jpg , 2 => reort2.jpg]`
+`[ 1 => report1.jpg , 2 => report2.jpg]`
 then the user will choose the design.
 
 ### 2- Images
