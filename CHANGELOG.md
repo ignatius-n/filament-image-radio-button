@@ -2,6 +2,10 @@
 
 All notable changes to `filament-image-radio-button` will be documented in this file.
 
+## Support Filament v4 - 2025-06-15
+
+Support Filament v4
+
 ## v1.1.3 - 2025-03-16
 
 Update the Documentation
