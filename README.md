@@ -22,6 +22,20 @@ You can install the package via composer:
 ```bash
 composer require alkoumi/filament-image-radio-button
 ```
+## for fiament 4
+1- **create custom theme [Filament Docs](https://filamentphp.com/docs/3.x/panels/themes#creating-a-custom-theme)**
+
+2- then add
+
+`@source '../../../../vendor/alkoumi/filament-image-radio-button/resources/views/**/*.blade.php';`
+
+to the created theme.
+
+
+3- Then register the theme in your xxxPanelProvider
+`->viteTheme('resources/css/filament/main/theme.css')`
+
+4- Then `npm run build`
 
 # Important
 ### 1- OPTIONS

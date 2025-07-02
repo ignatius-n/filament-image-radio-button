@@ -1,6 +1,16 @@
 <x-dynamic-component
     :component="$getFieldWrapperView()"
+    :field="$field"
 >
+    <x-slot
+        name="label"
+        @class([
+            'sm:pt-1.5' => $hasInlineLabel,
+        ])
+    >
+        {{ $getLabel() }}
+    </x-slot>
+
     <ul role="list" class="grid gap-8 xl:grid-cols-3 lg:grid-cols-3 md:grid-cols-3 sm:grid-cols-2 p-4 relative">
         @foreach ($getOptions() as $value => $image)
             <li class="overflow-hidden relative">
@@ -10,6 +20,7 @@
                         name="{{ $getId() }}"
                         type="radio"
                         value="{{ $value }}"
+                        required={{ $isRequired() }}
                     {{ $applyStateBindingModifiers('wire:model') }}="{{ $getStatePath() }}"
                     class="rb-image"
                     />

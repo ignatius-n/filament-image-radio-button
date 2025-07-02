@@ -3,6 +3,7 @@
 namespace Alkoumi\FilamentImageRadioButton\Forms\Components;
 
 use Closure;
+use Filament\Forms\Components\Concerns\HasLabel;
 use Filament\Forms\Components\Field;
 use Illuminate\Contracts\Filesystem\Filesystem;
 use Illuminate\Support\Facades\Storage;
@@ -10,6 +11,7 @@ use Illuminate\Support\HtmlString;
 
 class ImageRadioGroup extends Field
 {
+    use HasLabel;
     protected string $view = 'filament-image-radio-button::forms.components.image-radio-group';
 
     protected string | Closure | null $diskName = null;
