@@ -2,6 +2,10 @@
 
 All notable changes to `filament-image-radio-button` will be documented in this file.
 
+## v1.1.6 - 2025-07-03
+
+**Full Changelog**: https://github.com/alkoumi/filament-image-radio-button/compare/v1.1.5...v1.1.6
+
 ## v1.1.5 - 2025-07-02
 
 **Full Changelog**: https://github.com/alkoumi/filament-image-radio-button/compare/v1.1.4...v1.1.5
