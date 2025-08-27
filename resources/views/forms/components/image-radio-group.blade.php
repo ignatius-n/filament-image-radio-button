@@ -21,102 +21,34 @@
                         type="radio"
                         value="{{ $value }}"
                         required={{ $isRequired() }}
-                    {{ $applyStateBindingModifiers('wire:model') }}="{{ $getStatePath() }}"
-                    class="rb-image"
+                        {{ $applyStateBindingModifiers('wire:model') }}="{{ $getStatePath() }}"
+                        class="peer sr-only"
                     />
-                    <span class="img-radio-selected absolute"></span>
-                    <div class="img-radio">
+                    {{-- Selected indicator --}}
+                    <span class="absolute -top-2.5 z-50 hidden peer-checked:block
+                        rtl:-right-10 ltr:-left-10
+                        w-[110px] h-[60px]
+                        bg-primary-500
+                        rtl:rotate-[49.5deg] ltr:-rotate-[49.5deg]
+                        origin-center"></span>
+
+                    {{-- Image container maintaining aspect ratio --}}
+                    <div class="relative border-4 border-gray-300 dark:border-gray-600
+                        rounded-2xl
+                        overflow-hidden
+                        transition-all duration-200
+                        peer-checked:border-6 peer-checked:border-primary-500
+                        hover:border-[6px]
+                        h-fit flex items-center justify-center bg-white dark:bg-gray-950">
                         <img
                             src="{{ asset($getDisk()->url('')) }}{{ $image }}"
                             alt="{{ $value }}"
-                            class="w-full h-[300px] cursor-pointer object-contain"
+                            class="object-contain transition-all duration-100"
                         />
+                        {{--                        max-w-full max-h-full--}}
                     </div>
                 </label>
             </li>
         @endforeach
     </ul>
 </x-dynamic-component>
-
-<style>
-    /* Common styles for both directions */
-    input[name="{{ $getId() }}"]:checked + .img-radio-selected {
-        background-color: rgba(var(--primary-500),var(--tw-bg-opacity));
-        transform: rotate(0.8648rad);
-        width: 110px;
-        height: 60px;
-        position: absolute;
-        top: -10px;
-        z-index: 99999;
-    }
-
-    /* RTL specific positioning (right corner) */
-    [dir="rtl"] input[name="{{ $getId() }}"]:checked + .img-radio-selected {
-        right: -40px;
-        left: auto;
-    }
-
-    /* LTR specific positioning (left corner) */
-    [dir="ltr"] input[name="{{ $getId() }}"]:checked + .img-radio-selected,
-    html:not([dir="rtl"]) input[name="{{ $getId() }}"]:checked + .img-radio-selected {
-        left: -40px;
-        right: auto;
-        transform: rotate(-0.8648rad); /* Flip the rotation for LTR */
-    }
-
-    input[name="{{ $getId() }}"]:checked ~ .img-radio {
-        border: 3px solid rgba(var(--primary-500),var(--tw-bg-opacity));
-    }
-
-    input[name="{{ $getId() }}"]:checked ~ .img-radio {
-        border: 3px solid rgba(var(--primary-500),var(--tw-bg-opacity));
-    }
-
-    input[name="{{ $getId() }}"]:checked ~ .img-radio {
-        border: 3px solid rgba(var(--primary-500),var(--tw-bg-opacity));
-    }
-
-    .rb-image {
-        position: absolute;
-        opacity: 0;
-        width: 0;
-        height: 0;
-    }
-
-    .img-radio {
-        border: 1px solid #dee2e6;
-        max-width: 100%;
-        border-radius: 15px;
-        cursor: pointer;
-        display: block;
-        height: auto;
-        margin: auto;
-        padding: 5px;
-        position: relative;
-        width: 100%;
-        transition: border 0.2s ease;
-    }
-
-    .img-radio:hover img {
-        -o-object-position: bottom;
-        object-position: bottom;
-    }
-
-    .img-radio img {
-        height: auto;
-        max-height: 600px;
-        -o-object-fit: contain;
-        object-fit: contain;
-        -o-object-position: center;
-        object-position: center;
-        transform-origin: 50% 50%;
-        transition-duration: .1s;
-        transition: all 1s ease;
-        width: 100%;
-        border-radius: inherit;
-    }
-
-    .overflow-hidden {
-        overflow: hidden;
-    }
-</style>

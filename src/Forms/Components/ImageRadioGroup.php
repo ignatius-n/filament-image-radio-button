@@ -3,18 +3,18 @@
 namespace Alkoumi\FilamentImageRadioButton\Forms\Components;
 
 use Closure;
-use Filament\Forms\Components\Concerns\HasLabel;
 use Filament\Forms\Components\Field;
+use Filament\Schemas\Components\Concerns\HasLabel;
 use Illuminate\Contracts\Filesystem\Filesystem;
 use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\HtmlString;
 
 class ImageRadioGroup extends Field
 {
     use HasLabel;
+
     protected string $view = 'filament-image-radio-button::forms.components.image-radio-group';
 
-    protected string | Closure | null $diskName = null;
+    protected string|Closure|null $diskName = null;
 
     protected int|Closure|null $imageWidth = 120;
 
@@ -30,16 +30,17 @@ class ImageRadioGroup extends Field
 
         return $this;
     }
-    public function disk(string | Closure | null $name): static
-    {
-        $this->diskName = $name;
-
-        return $this;
-    }
 
     public function getDisk(): Filesystem
     {
         return Storage::disk($this->getDiskName());
+    }
+
+    public function disk(string|Closure|null $name): static
+    {
+        $this->diskName = $name;
+
+        return $this;
     }
 
     public function getDiskName(): string
